@@ -7,7 +7,7 @@ const resolvers = {
         me: async (parent, args, context) => {
 
             if (context.user) {
-                const userData = await User.findOne({})
+                const userData = await User.findOne({ _id: context.user._id })
                     .select('-__v -password')
                     .populate('thoughts')
                     .populate('friends');
@@ -15,7 +15,7 @@ const resolvers = {
                 return userData;
             };
 
-            throw new AuthenticationError('Notlogged in');
+            throw new AuthenticationError('Not logged in');
         },
 
         thoughts: async (parent, { username }) => {
