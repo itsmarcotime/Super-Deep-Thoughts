@@ -6,6 +6,7 @@ const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
 const { authMiddleware } = require('./utils/auth');
 const path = require('path');
+const cors = require('cors');
 
 const PORT = process.env.PORT || 3001;
 //create a new apollo server and pass in our schemas
