@@ -19,9 +19,11 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-app.use({
-  origin: ["http://localhost:3001", ]
-});
+app.use(
+  cors({
+    origin: ["http://localhost:3001",]
+  })
+);
 
 //create a new instance of apollo server with GraphQL schema
 const startApolloServer = async (typeDefs, resolvers) => {
